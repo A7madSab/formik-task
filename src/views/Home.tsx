@@ -39,7 +39,6 @@ const Home = () => {
 
         Object.keys(groupedItems).forEach((key) => {
             groupedItems[key].items.forEach(({ selected, amount }: Item) => {
-                console.log("amount", amount, "selected", selected)
                 if (selected) {
                     currenttotalTax += ((values?.taxValue || 0) / 100) * amount
                 }
