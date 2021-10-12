@@ -20,8 +20,8 @@ import { Box } from "@mui/system"
 
 const Home = () => {
     const [groupedItems, setGroupedItems] = useState(() => groupArray({ items }))
-    const [totalTax, setTotalTax] = useState<number | null>(null)
-    const [total, setTotal] = useState<number | null>(null)
+    const [totalTax, setTotalTax] = useState<number>(0)
+    const [total, setTotal] = useState<number>(0)
 
     const handleItemToggle = ({ id, key }: { id: number; key: string }) => {
         const toggleditems = groupedItems[key].items.map((toggleItem: Item) => (toggleItem.id === id ? { ...toggleItem, selected: !toggleItem.selected } : toggleItem))
@@ -41,8 +41,8 @@ const Home = () => {
             groupedItems[key].items.forEach(({ selected, amount }: Item) => {
                 if (selected) {
                     currenttotalTax += ((values?.taxValue || 0) / 100) * amount
+                    currenttotal += amount
                 }
-                currenttotal += ((values?.taxValue || 0) / 100) * amount
             })
         })
 
@@ -131,7 +131,7 @@ const Home = () => {
 
                             <Grid sx={{ margin: "16px 0px" }} container>
                                 <Grid item sx={{ flexGrow: 1 }}>
-                                    {totalTax && (
+                                    {Boolean(totalTax) && (
                                         <Typography variant="h4">
                                             Total Taxs:<strong> {totalTax?.toFixed(2)} $</strong>
                                         </Typography>
@@ -145,17 +145,17 @@ const Home = () => {
                                 </Grid>
                             </Grid>
                             <Grid sx={{ margin: "16px 0px" }} container>
-                                <Grid item sx={{ flexGrow: 1 }}>
-                                    {total && (
+                                {Boolean(total) && (
+                                    <Grid item sx={{ flexGrow: 1 }}>
                                         <Typography variant="h4">
                                             Total Item: <strong>{total?.toFixed(2)} $</strong>
                                         </Typography>
-                                    )}
-                                </Grid>
+                                    </Grid>
+                                )}
                             </Grid>
                             <Grid sx={{ margin: "16px 0px" }} container>
                                 <Grid item sx={{ flexGrow: 1 }}>
-                                    {total && totalTax && (
+                                    {Boolean(total) && Boolean(totalTax) && (
                                         <Typography variant="h4">
                                             Total: <strong>{(total + totalTax).toFixed(2)} $</strong>
                                         </Typography>
