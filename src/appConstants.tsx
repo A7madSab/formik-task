@@ -1,7 +1,10 @@
-export const items = [
+import { Item } from "types/item"
+
+export const items: Item[] = [
     {
         id: 14864,
         tab_id: 3202,
+        selected: false,
         name: "Recurring Item",
         amount: 12.0,
         amount_type: "fixed",
@@ -47,6 +50,7 @@ export const items = [
     {
         id: 14865,
         tab_id: 3202,
+        selected: false,
         name: "Jasinthe Bracelet",
         amount: 26.0,
         amount_type: "fixed",
@@ -80,6 +84,7 @@ export const items = [
     {
         id: 14867,
         tab_id: 3202,
+        selected: false,
         name: "Jasinthe Bracelet",
         amount: 26.0,
         amount_type: "fixed",
@@ -113,6 +118,7 @@ export const items = [
     {
         id: 14868,
         tab_id: 3202,
+        selected: false,
         name: "Recurring Item with questions",
         amount: 12.0,
         amount_type: "fixed",
@@ -129,7 +135,20 @@ export const items = [
         description: null,
         available_quantity: null,
         hidden: false,
-        options: { recurring: { enabled: true, options: { ends: { type: "payment_count", payment_count: 5 }, start: { type: "first_payment" }, repeatInterval: "P1M" } }, makeAvailableQuantityPublic: false },
+        options: {
+            recurring: {
+                enabled: true,
+                options: {
+                    ends: {
+                        type: "payment_count",
+                        payment_count: 5,
+                    },
+                    start: { type: "first_payment" },
+                    repeatInterval: "P1M",
+                },
+            },
+            makeAvailableQuantityPublic: false,
+        },
         tsv: "'item':2 'question':4 'recur':1",
         quantity_sold: 0,
         amount_sold: 0.0,
@@ -145,6 +164,7 @@ export const items = [
     {
         id: 14869,
         tab_id: 3202,
+        selected: false,
         name: "Zero amount item with questions",
         amount: 0.0,
         amount_type: "fixed",
@@ -177,6 +197,7 @@ export const items = [
     {
         id: 14870,
         tab_id: 3202,
+        selected: false,
         name: "Inspire Bracelet",
         amount: 32.0,
         amount_type: "fixed",
@@ -210,6 +231,7 @@ export const items = [
     {
         id: 14872,
         tab_id: 3202,
+        selected: false,
         name: "Normal item with questions",
         amount: 55.0,
         amount_type: "fixed",
@@ -242,6 +264,7 @@ export const items = [
     {
         id: 14873,
         tab_id: 3202,
+        selected: false,
         name: "normal item ",
         amount: 20.0,
         amount_type: "fixed",
